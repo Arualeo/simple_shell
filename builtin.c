@@ -1,5 +1,8 @@
 #include "shell.h"
 
+#ifndef BUILTIN_C
+#define BUILTIN_C
+
 /**
  * _myexit - exits the shell
  * @info: Structure containing potential arguments. Used to maintain
@@ -74,4 +77,7 @@ STATIC int _mycd(info_t *info)
 	else
 	{
 		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
-		_setenv(info, "PWD", getcwd(buffer, 1024
+		_setenv(info, "PWD", getcwd(buffer, 1024));
+	}
+	return (0);
+}
